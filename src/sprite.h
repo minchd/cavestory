@@ -17,16 +17,19 @@ class Graphics;
 class Sprite
 {
 public:
-    Sprite();
-    Sprite(Graphics& graphics, const std::string& filePath, int sourceX, int sourceY, int width, int height, float posX, float posY);
+  Sprite();
+  Sprite(Graphics& graphics, const std::string& filePath, int sourceX, int sourceY, int width, int height, float posX, float posY);
 
-    virtual ~Sprite();
-    virtual void update();
-    void draw(Graphics& graphics, int x, int y);
+  virtual ~Sprite();
+  virtual void update();
+  void draw(Graphics& graphics, int x, int y);
+
+protected:
+  SDL_Rect m_sourceRect;
+  SDL_Texture* m_spriteSheet;
+
 private:
-    SDL_Rect m_sourceRect;
-    SDL_Texture* m_spriteSheet;
-    float m_x, m_y;
+  float m_x, m_y;
 };
 
 
