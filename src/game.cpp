@@ -31,7 +31,9 @@ void Game::gameLoop()
   Input input;
   SDL_Event event;
 
-  m_player = Sprite(graphics, "./content/sprites/MyChar.png", 0, 0, 16, 16, 100, 100);
+  m_player = AnimatedSprite(graphics, "./content/sprites/MyChar.png", 0, 0, 16, 16, 100, 100, 100);
+  m_player.setupAnimation();
+  m_player.playeAnimation("RunRight");
 
   int LAST_UPDATE_TIME = SDL_GetTicks();
 
@@ -73,5 +75,5 @@ void Game::draw(Graphics &graphics)
 
 void Game::update(float elapsedTime)
 {
-
+  m_player.update(elapsedTime);
 }
